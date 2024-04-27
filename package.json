@@ -6,7 +6,10 @@
     "scripts": {
         "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules src/index.ts",
         "build": "tsc",
-        "test": "jest"
+        "test": "jest",
+        "db": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules src/adapters/db/db.ts",
+        "db-create": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules src/adapters/db/create.ts",
+        "db-select": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules src/adapters/db/select.ts"
     },
     "keywords": [],
     "author": "Alfredo Tito Silva",
@@ -24,7 +27,9 @@
         "typescript": "^5.1.6"
     },
     "dependencies": {
+        "@types/sqlite3": "^3.1.11",
         "bcrypt": "^5.1.1",
+        "sqlite3": "^5.1.7",
         "terminal-kit": "^3.1.1",
         "uuid": "^9.0.1"
     }

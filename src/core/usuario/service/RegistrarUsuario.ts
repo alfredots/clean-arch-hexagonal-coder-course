@@ -17,6 +17,9 @@ export default class RegistrarUsuario implements CasoDeUso<Usuario, void> {
     const usuarioExistente = await this.repositorio.buscarPorEmail(
       usuario.email
     )
+
+    console.log(usuarioExistente)
+    
     if (usuarioExistente) throw new Error(Erros.USUARIO_JA_EXISTE)
 
     const novoUsuario: Usuario = {

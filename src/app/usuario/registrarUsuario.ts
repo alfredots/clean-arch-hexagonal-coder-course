@@ -2,7 +2,7 @@ import TerminalUtil from '../util/TerminalUtil'
 import Usuario from '@/core/usuario/model/Usuario'
 import RegistrarUsuario from '@/core/usuario/service/RegistrarUsuario'
 import SenhaCripto from '@/adapters/auth/SenhaCripto'
-import RepositorioUsuarioEmMemoria from '@/adapters/mock/RepositorioUsuarioEmMemoria'
+import RepositorioUsuarioSqLite from '@/adapters/db/RepositorioUsuarioSqLite'
 
 export default async function registrarUsuario() {
   TerminalUtil.titulo('Registrar Usuário')
@@ -14,16 +14,16 @@ export default async function registrarUsuario() {
   const usuario: Usuario = { nome, email, senha }
 
   const provedorCripto = new SenhaCripto()
-  const repositorio = new RepositorioUsuarioEmMemoria()
+  const repositorio = new RepositorioUsuarioSqLite()
   const casoDeUso = new RegistrarUsuario(provedorCripto, repositorio)
-  await casoDeUso.executar(usuario)
-
-  TerminalUtil.sucesso('Usuario registrado com sucesso')
-
+  
+  
   await TerminalUtil.esperarEnter()
 
   try {
     await casoDeUso.executar(usuario)
+
+    TerminalUtil.sucesso('Usuario registrado com sucesso')
   } catch (error) {
     TerminalUtil.erro('Usuario já existente')
   } finally {
