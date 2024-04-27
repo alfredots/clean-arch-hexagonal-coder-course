@@ -18,7 +18,6 @@ export default class RegistrarUsuario implements CasoDeUso<Usuario, void> {
       usuario.email
     )
 
-    console.log(usuarioExistente)
     
     if (usuarioExistente) throw new Error(Erros.USUARIO_JA_EXISTE)
 
@@ -28,8 +27,6 @@ export default class RegistrarUsuario implements CasoDeUso<Usuario, void> {
       email: usuario.email,
       senha: senhaCripto,
     }
-
-    console.log(novoUsuario)
 
     this.repositorio.inserir(novoUsuario)
   }
