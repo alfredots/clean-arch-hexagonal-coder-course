@@ -1,5 +1,7 @@
 coverage
 dist
-node_modules
+arquitetura_hexagonal/node_modules
+backend/node_modules
 .DS_Store
-arqhex.db
+arquitetura_hexagonal/arqhex.db
+backend/arqhex.db
